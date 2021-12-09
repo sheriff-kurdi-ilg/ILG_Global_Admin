@@ -25,6 +25,9 @@ namespace ILG_Global_Admin.Web.Controllers
         public ActionResult Create()
         {
             return View();
+            
+            
+            
         }
 
         // POST: HomeController/Create
