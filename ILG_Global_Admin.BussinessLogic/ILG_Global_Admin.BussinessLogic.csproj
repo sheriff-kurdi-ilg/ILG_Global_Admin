@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Abstraction\Services\IILG_PathProvider.cs" />
+    <Compile Remove="Abstraction\Services\IImageDetailService.cs" />
+    <Compile Remove="Abstraction\Services\IImageMasterService .cs" />
+    <Compile Remove="Abstraction\Services\ISectionDetailService.cs" />
+    <Compile Remove="Abstraction\Services\ISectionMasterService.cs" />
+    <Compile Remove="Abstraction\Services\MailService.cs" />
+    <Compile Remove="Services\ImageDetailService.cs" />
+    <Compile Remove="Services\ImageMasterService.cs" />
+    <Compile Remove="Services\SectionDetailService.cs" />
+    <Compile Remove="Services\SectionMasterService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.12" />
+  </ItemGroup>
+
+</Project>

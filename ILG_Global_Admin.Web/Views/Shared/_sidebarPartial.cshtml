@@ -1,0 +1,126 @@
+﻿<!-- Brand Logo -->
+<a href="../../index3.html" class="brand-link">
+    <img src="~/lib/bootstrap/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">ILG Global Admin</span>
+</a>
+
+<!-- Sidebar -->
+<div class="sidebar">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <!-- Sidebar user (optional) -->
+        <!--<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/lib/bootstrap/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Alexander Pierce</a>
+            </div>
+        </div>-->
+
+        <!-- SidebarSearch Form -->
+        <!--<div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>-->
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Homepage Sections
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-chalkboard-teacher nav-icon"></i>
+                                <p>Leaderboard Section</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-balance-scale nav-icon"></i>
+                                <p>
+                                    Our Services Section
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li>
+                                    <a href='@Url.Action("Index", "OurServices")' class="nav-link">
+                                        <i class="fas fa-tasks"></i>
+                                        <p>Slider Items</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-handshake nav-icon"></i>
+                                <p>
+                                    Success Stories Section
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li>
+                                    <a href='@Url.Action("Index", "SuccessStory")' class="nav-link">
+                                        <i class="fas fa-heading"></i>
+                                        <p>Heading</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li>
+                                    <a href='@Url.Action("Index", "SuccessStory")' class="nav-link">
+                                        <i class="fas fa-tasks"></i>
+                                        <p>Slider Items</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-address-book nav-icon"></i>
+                                <p>
+                                    Contact Us Section
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li>
+                                    <a href='@Url.Action("Index", "ContactUs")' class="nav-link">
+                                        <i class="fas fa-heading"></i>
+                                        <p>Heading</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li>
+                                    <a href='@Url.Action("Index", "ContactUs")' class="nav-link">
+                                        <i class="fas fa-tasks"></i>
+                                        <p>Slider Items</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+        </nav>
+    }
+</div>
+
+

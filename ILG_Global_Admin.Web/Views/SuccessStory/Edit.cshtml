@@ -1,0 +1,115 @@
+﻿@model ILG_Global.BussinessLogic.ViewModels.SuccessStoriesVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>@Model.Title</h4>
+<hr />
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="@Model.SuccessStoryId" />
+    <input type="hidden" asp-for="@Model.ImageName" />
+    <input type="hidden" asp-for="@Model.PdfFileName" />
+    <input type="hidden" asp-for="@Model.PhoneNumber" />
+    <input type="hidden" asp-for="@Model.LanguageCode" />
+    <div class="card">
+        <div class="card-header">
+            <h4>@Model.Title</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                @if (Model.Summary != null)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title">English Details</h1>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label asp-for="Title" class="control-label"></label>
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Summary" class="control-label"></label>
+                                    <textarea id="editor1" asp-for="Summary" class="form-control"></textarea>
+                                    <span asp-validation-for="Summary" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.SummaryAr != null)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h1 class="card-title">Arabic Details</h1>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label asp-for="TitleAr" class="control-label"></label>
+                                    <input asp-for="TitleAr" class="form-control" />
+                                    <span asp-validation-for="TitleAr" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="SummaryAr" class="control-label"></label>
+                                    <textarea id="editor2" asp-for="SummaryAr" class="form-control"></textarea>
+                                    <span asp-validation-for="SummaryAr" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="form-group">
+                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                    <input asp-for="IsEnabled" type="checkbox" class="custom-control-input" id="customSwitch3">
+                    <label class="custom-control-label" for="customSwitch3">Status</label>
+                </div>
+            </div>
+            <div class="form-group float-end">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor1') 
+            //    removePlugins: ['Paragraph','Heading', 'Link']
+            )
+            .catch(error => {
+                console.error(error);
+            });
+
+        ClassicEditor
+            .create(document.querySelector('#editor2'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

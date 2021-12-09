@@ -1,0 +1,50 @@
+﻿@model ILG_Global.BussinessLogic.ViewModels.OurServiceVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OurServiceDetail</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SubTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubTitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Summary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+        <hr />
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SubTitleAr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubTitleAr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SummaryAr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SummaryAr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OurServiceID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OurServiceID)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.OurServiceID  }) |
+    <a asp-action="Index">Back to List</a>
+</div>
