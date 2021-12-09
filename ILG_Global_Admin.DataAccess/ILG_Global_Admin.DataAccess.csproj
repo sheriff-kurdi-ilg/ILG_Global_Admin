@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ILG_Global_Admin.BussinessLogic\ILG_Global_Admin.BussinessLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
