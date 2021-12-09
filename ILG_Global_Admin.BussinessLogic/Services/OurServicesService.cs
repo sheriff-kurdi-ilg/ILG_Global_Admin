@@ -173,6 +173,7 @@ namespace ILG_Global.Web.Services
                 OurServiceID = ourServiceMaster.Id,
                 IsEnabled = ourServiceMaster.IsEnabled,
                 ImageMastersId = ourServiceMaster.ImageMastersId,
+                ImageURL = ourServiceMaster.ImageURL
 
             };
             foreach (var item in ourServiceMaster.OurServiceDetails)
@@ -190,6 +191,7 @@ namespace ILG_Global.Web.Services
                 IsEnabled = ourServiceVM.IsEnabled,
                 ImageMastersId = ourServiceVM.ImageMastersId,
                 OurServiceDetails = ourServiceDetails,
+                ImageURL = ourServiceVM.ImageURL
             };
             return OurServiceMaster;
 
