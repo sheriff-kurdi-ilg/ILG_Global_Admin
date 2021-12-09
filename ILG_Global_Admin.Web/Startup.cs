@@ -16,7 +16,7 @@ using ILG_Global_Admin.BussinessLogic.Services;
 namespace ILG_Global_Admin.Web
 {
     public class Startup
-    {
+    { // hello
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
