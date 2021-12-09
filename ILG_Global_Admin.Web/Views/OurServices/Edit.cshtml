@@ -8,7 +8,7 @@
 <h1>Edit</h1>
 
 <hr />
-<form asp-action="Edit">
+<form enctype="multipart/form-data" asp-action="Edit">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="@Model.OurServiceID" />
     <input type="hidden" asp-for="@Model.ImageMastersId" />
@@ -75,6 +75,14 @@
             </div>
 
         </div>
+
+              <div class="row">
+                  <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" type="file" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+          </div>
         <div class="card-footer">
             <div class="form-group">
                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">

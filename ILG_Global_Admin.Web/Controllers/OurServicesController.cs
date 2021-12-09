@@ -80,6 +80,16 @@ namespace ILG_Global_Admin.Web.Controllers
         {
             try
             {
+
+                if(ourServiceVM.Image != null)
+                {
+                    string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads");
+                    string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(ourServiceVM.Image.FileName);
+                    string filePath = Path.Combine(uploadsFolder, uniqFileName);
+                    ourServiceVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                    ourServiceVM.ImageURL = uniqFileName;
+
+                }
                 await ourServicesService.Update(ourServiceVM);
                 return RedirectToAction(nameof(Index));
             }
