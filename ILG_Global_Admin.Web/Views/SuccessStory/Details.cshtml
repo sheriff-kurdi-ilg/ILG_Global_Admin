@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Summary)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Summary)
+          @Html.Raw(Model.Summary)
         </dd>
         <hr />
         <dt class = "col-sm-2">
@@ -34,7 +34,7 @@
             @Html.DisplayNameFor(model => model.SummaryAr)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SummaryAr)
+          @Html.Raw(Model.SummaryAr)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.SuccessStoryId)
