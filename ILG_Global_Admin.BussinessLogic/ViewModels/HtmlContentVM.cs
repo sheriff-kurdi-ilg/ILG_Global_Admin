@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ILG_Global_Admin.BussinessLogic.ViewModels
+namespace ILG_Global.BussinessLogic.ViewModels
 {
     public class HtmlContentVM
     {
@@ -16,17 +16,23 @@ namespace ILG_Global_Admin.BussinessLogic.ViewModels
         #region Master
         public bool IsEnabled { get; set; }
         public bool CanBeDeletedByUser { get; set; }
-        public IFormFile Image { get; set; }
-        public string ImageURL { get; set; }
+
         #endregion
 
         #region Detail
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string TitleAr { get; set; }
+        [Required]
         public string SubTitle { get; set; }
+        [Required]
         public string SubTitleAr { get; set; }
+        [Required]
         public string Summary { get; set; }
+        [Required]
         public string SummaryAr { get; set; }
+        [Required]
         public string LanguageCode { get; set; }
         #endregion
     }

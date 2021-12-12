@@ -1,4 +1,5 @@
-﻿using ILG_Global_Admin.BussinessLogic.Models;
+﻿using ILG_Global_Admin.BussinessLogic.Abstraction.Repositories;
+using ILG_Global_Admin.BussinessLogic.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ILG_Global_Admin.DataAccess
 {
-    public class HtmlContentMasterRepository
+    public class HtmlContentMasterRepository : IHtmlContentMasterRepository
     {
         private readonly ILG_GlobalContext _context;
 

@@ -24,7 +24,7 @@ namespace ILG_Global_Admin.DataAccess
 
             try
             {
-                lHtmlContentDetails = await applicationDbContext.HtmlContentDetails.Where(m=>m.LanguageCode == sLanguageCode).ToListAsync();
+                lHtmlContentDetails = await applicationDbContext.HtmlContentDetails.Include(m => m.HtmlContent).Where(m=>m.LanguageCode == sLanguageCode).ToListAsync();
             }
             catch (Exception)
             {
@@ -40,7 +40,7 @@ namespace ILG_Global_Admin.DataAccess
 
             try
             {
-                oHtmlContentDetail = await applicationDbContext.HtmlContentDetails.FirstOrDefaultAsync(m => m.HtmlContentId == nID && m.LanguageCode == sLanguageCode);
+                oHtmlContentDetail = await applicationDbContext.HtmlContentDetails.Include(m => m.HtmlContent).FirstOrDefaultAsync(m => m.HtmlContentId == nID && m.LanguageCode == sLanguageCode);
             }
             catch (Exception oException)
             {

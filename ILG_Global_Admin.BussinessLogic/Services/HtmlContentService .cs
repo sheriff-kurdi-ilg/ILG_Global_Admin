@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ILG_Global.Web.Services
 {
-    public class HtmlContentService 
+    public class HtmlContentService : IHtmlContentService
     {
         private readonly IHtmlContentMasterRepository htmlContentMasterRepository;
         private readonly IHtmlContentDetailRepository htmlContentDetailRepository;

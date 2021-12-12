@@ -1,0 +1,54 @@
+﻿@model ILG_Global.BussinessLogic.ViewModels.HtmlContentVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Html Content</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SubTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubTitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Summary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+        <hr />
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SubTitleAr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SubTitleAr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SummaryAr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SummaryAr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HtmlContenID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HtmlContenID)
+        </dd>
+    </dl>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="HtmlContenID" />
+    <input type="hidden" asp-for="LanguageCode" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-action="Index">Back to List</a>
+</form>
+

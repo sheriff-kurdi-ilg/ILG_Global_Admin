@@ -55,6 +55,11 @@ namespace ILG_Global_Admin.Web
             services.AddScoped<IContactUsMasterRepository, ContactUsMasterRepository>();
             services.AddScoped<IContactUsService, ContactUsService>();
 
+            services.AddScoped<IHtmlContentDetailRepository, HtmlContentDetailRepository>();
+            services.AddScoped<IHtmlContentMasterRepository, HtmlContentMasterRepository>();
+            services.AddScoped<IHtmlContentService, HtmlContentService>();
+
+
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddControllersWithViews();
 
