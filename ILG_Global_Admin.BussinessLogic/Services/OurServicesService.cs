@@ -16,7 +16,9 @@ namespace ILG_Global.Web.Services
         private readonly IOurServiceMasterRepository OurServiceMasterRepository;
         private readonly IOurServiceDetailRepository oIOurServiceDetailRepository;
 
-        public OurServicesService(IOurServiceMasterRepository OurServiceMasterRepository, IOurServiceDetailRepository oIOurServiceDetailRepository)
+        public OurServicesService(
+            IOurServiceMasterRepository OurServiceMasterRepository, 
+            IOurServiceDetailRepository oIOurServiceDetailRepository)
         {
             this.OurServiceMasterRepository = OurServiceMasterRepository;
             this.oIOurServiceDetailRepository = oIOurServiceDetailRepository;
@@ -35,19 +37,71 @@ namespace ILG_Global.Web.Services
             }
         }
 
+        #region Insert
+
+
         public async Task<bool> Insert(OurServiceVM oEntity)
         {
             try
             {
                 OurServiceMaster OurServiceMaster = await oConvertMasterToDataModel(oEntity);
+
                 await OurServiceMasterRepository.Insert(OurServiceMaster);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception oException)
             {
                 return false;
             }
         }
+
+        private async Task<OurServiceMaster> oConvertMasterToDataModel(OurServiceVM ourServiceVM)
+        {
+            List<OurServiceDetail> ourServiceDetails = await GetEnArDetails(ourServiceVM);
+
+            OurServiceMaster OurServiceMaster = new()
+            {
+                Id = ourServiceVM.OurServiceID,
+                IsEnabled = ourServiceVM.IsEnabled,
+                ImageMastersId = ourServiceVM.ImageMastersId,
+                OurServiceDetails = ourServiceDetails,
+                ImageURL = ourServiceVM.ImageURL
+            };
+            return OurServiceMaster;
+
+        }
+
+        private async Task<List<OurServiceDetail>> GetEnArDetails(OurServiceVM ourServiceVM)
+        {
+            List<OurServiceDetail> ourServiceDetails = new List<OurServiceDetail>();
+
+            OurServiceDetail oOurServiceDetail = await oConvertDetailViewModelToDataModel(ourServiceVM,"en");
+            ourServiceDetails.Add(oOurServiceDetail);
+
+            oOurServiceDetail = await oConvertDetailViewModelToDataModel(ourServiceVM,"ar");
+            ourServiceDetails.Add(oOurServiceDetail);
+
+            return ourServiceDetails;
+        }
+
+        private async Task<OurServiceDetail> oConvertDetailViewModelToDataModel(OurServiceVM ourServiceVM, string sLanguageCode)
+        {
+            OurServiceDetail ourServiceDetail = new OurServiceDetail()
+            {
+                OurServiceId = ourServiceVM.OurServiceID,
+                LanguageCode = sLanguageCode,
+                Title = ourServiceVM.Title,
+                Summary = ourServiceVM.Summary,
+                SubTitle = ourServiceVM.SubTitle
+            };
+
+            return ourServiceDetail;
+        }
+
+
+        #endregion
+
+
 
         public async Task<List<OurServiceVM>> SelectAllAsync(string LanguageCode)
         {
@@ -132,41 +186,7 @@ namespace ILG_Global.Web.Services
             }
             return OurServiceVM;
         }
-        private async Task<OurServiceDetail> DetailViewModelToEnglishDataModel(OurServiceVM ourServiceVM)
-        {
-            OurServiceDetail ourServiceDetail = new OurServiceDetail()
-            {
-                OurServiceId = ourServiceVM.OurServiceID,
-                Title = ourServiceVM.Title,
-                Summary = ourServiceVM.Summary,
-                SubTitle = ourServiceVM.SubTitle,
-                LanguageCode = "en",
-            };
-            return ourServiceDetail;
-        }
-        private async Task<OurServiceDetail> DetailViewModelToArabicDataModel(OurServiceVM ourServiceVM)
-        {
-            OurServiceDetail ourServiceDetail = new OurServiceDetail()
-            {
-                OurServiceId = ourServiceVM.OurServiceID,
-                Title = ourServiceVM.TitleAr,
-                Summary = ourServiceVM.SummaryAr,
-                SubTitle = ourServiceVM.SubTitleAr,
-                LanguageCode = "ar",
-            };
 
-
-            return ourServiceDetail;
-        }
-        private async Task<List<OurServiceDetail>> GetEnArDetails (OurServiceVM ourServiceVM)
-        {
-            List<OurServiceDetail> ourServiceDetails = new List<OurServiceDetail>();
-            OurServiceDetail en = await DetailViewModelToEnglishDataModel(ourServiceVM);
-            OurServiceDetail ar = await DetailViewModelToArabicDataModel(ourServiceVM);
-            ourServiceDetails.Add(en);
-            ourServiceDetails.Add(ar);
-            return ourServiceDetails;
-        }
         private async Task<OurServiceVM> oConvertMasterToViewModel(OurServiceMaster ourServiceMaster)
         {
             OurServiceVM ourServiceVM = new OurServiceVM()
@@ -183,20 +203,9 @@ namespace ILG_Global.Web.Services
             }
             return ourServiceVM;
         }
-        private async Task<OurServiceMaster> oConvertMasterToDataModel(OurServiceVM ourServiceVM)
-        {
-            List<OurServiceDetail> ourServiceDetails = await GetEnArDetails(ourServiceVM);
-            OurServiceMaster OurServiceMaster = new()
-            {
-                Id = ourServiceVM.OurServiceID,
-                IsEnabled = ourServiceVM.IsEnabled,
-                ImageMastersId = ourServiceVM.ImageMastersId,
-                OurServiceDetails = ourServiceDetails,
-                ImageURL = ourServiceVM.ImageURL
-            };
-            return OurServiceMaster;
 
-        }
+
+
         private async Task<List<OurServiceVM>> lConvertToVMs(List<OurServiceDetail> lOurServiceDetails)
         {
             List<OurServiceVM> lOurServiceViewModels = new List<OurServiceVM>();
