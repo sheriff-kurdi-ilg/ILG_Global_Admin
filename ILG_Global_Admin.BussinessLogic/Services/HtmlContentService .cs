@@ -73,22 +73,22 @@ namespace ILG_Global.Web.Services
         {
             List<HtmlContentDetail> HtmlContentDetails = new List<HtmlContentDetail>();
 
-            HtmlContentDetail oHtmlContentDetail = await oConvertDetailViewModelToDataModel(HtmlContentVM,"en");
+            HtmlContentDetail oHtmlContentDetail = await oConvertDetailViewModelToEnDataModel(HtmlContentVM);
             HtmlContentDetails.Add(oHtmlContentDetail);
 
-            oHtmlContentDetail = await oConvertDetailViewModelToDataModel(HtmlContentVM,"ar");
+            oHtmlContentDetail = await oConvertDetailViewModelToArDataModel(HtmlContentVM);
             HtmlContentDetails.Add(oHtmlContentDetail);
 
             return HtmlContentDetails;
         }
 
-        private async Task<HtmlContentDetail> oConvertDetailViewModelToDataModel(HtmlContentVM HtmlContentVM, string sLanguageCode)
+        private async Task<HtmlContentDetail> oConvertDetailViewModelToEnDataModel(HtmlContentVM HtmlContentVM)
         {
             HtmlContentDetail HtmlContentDetail = new HtmlContentDetail()
             {
                 HtmlContentId = HtmlContentVM.HtmlContenID,
-                LanguageCode = sLanguageCode,
-                Title = HtmlContentVM.Title,
+                LanguageCode = "en",
+                Title = HtmlContentVM.TitleAr,
                 Summary = HtmlContentVM.Summary,
                 SubTitle = HtmlContentVM.SubTitle
             };
@@ -96,6 +96,19 @@ namespace ILG_Global.Web.Services
             return HtmlContentDetail;
         }
 
+        private async Task<HtmlContentDetail> oConvertDetailViewModelToArDataModel(HtmlContentVM HtmlContentVM)
+        {
+            HtmlContentDetail HtmlContentDetail = new HtmlContentDetail()
+            {
+                HtmlContentId = HtmlContentVM.HtmlContenID,
+                LanguageCode = "ar",
+                Title = HtmlContentVM.Title,
+                Summary = HtmlContentVM.Summary,
+                SubTitle = HtmlContentVM.SubTitle
+            };
+
+            return HtmlContentDetail;
+        }
 
         #endregion
 
