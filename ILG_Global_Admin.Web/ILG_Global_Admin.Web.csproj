@@ -27,7 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Uploads\" />
+    <Folder Include="wwwroot\Uploads\LeaderBoard\" />
+    <Folder Include="wwwroot\Uploads\SuccessStories\" />
+    <Folder Include="wwwroot\Uploads\OurServices\" />
   </ItemGroup>
 
 </Project>

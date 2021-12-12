@@ -57,7 +57,7 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
 
-                string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads");
+                string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads/SuccessStories");
                 string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(successStoriesVM.Image.FileName);
                 string filePath = Path.Combine(uploadsFolder, uniqFileName);
                 successStoriesVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
@@ -94,7 +94,7 @@ namespace ILG_Global_Admin.Web.Controllers
 
                 if (successStoriesVM.Image != null)
                 {
-                    string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads");
+                    string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads/SuccessStories");
                     string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(successStoriesVM.Image.FileName);
                     string filePath = Path.Combine(uploadsFolder, uniqFileName);
                     successStoriesVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));

@@ -49,7 +49,7 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
 
-                string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads");
+                string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads/OurServices");
                 string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(ourServiceVM.Image.FileName);
                 string filePath = Path.Combine(uploadsFolder, uniqFileName);
                 ourServiceVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
@@ -83,7 +83,7 @@ namespace ILG_Global_Admin.Web.Controllers
 
                 if(ourServiceVM.Image != null)
                 {
-                    string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads");
+                    string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads/OurServices");
                     string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(ourServiceVM.Image.FileName);
                     string filePath = Path.Combine(uploadsFolder, uniqFileName);
                     ourServiceVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
