@@ -18,7 +18,7 @@ namespace ILG_Global_Admin.DataAccess
             this.applicationDbContext = applicationDbContext;
         }
 
-        public async Task<IEnumerable<HtmlContentDetail>> SelectAllAsync(string sLanguageCode)
+        public async Task<List<HtmlContentDetail>> SelectAllAsync(string sLanguageCode)
         {
             List<HtmlContentDetail> lHtmlContentDetails = new List<HtmlContentDetail>();
 

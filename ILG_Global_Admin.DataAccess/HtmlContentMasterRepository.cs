@@ -17,7 +17,7 @@ namespace ILG_Global_Admin.DataAccess
             this._context = context;
         }
 
-        public async Task<IEnumerable<HtmlContentDetail>> SelectAllAsync()
+        public async Task<List<HtmlContentDetail>> SelectAllAsync()
         {
             List<HtmlContentDetail> lHtmlContentdetails = new List<HtmlContentDetail>();
 
@@ -33,7 +33,7 @@ namespace ILG_Global_Admin.DataAccess
             return lHtmlContentdetails;
         }    
         
-        public async Task<IEnumerable<HtmlContentMaster>> SelectAllMasterAsync()
+        public async Task<List<HtmlContentMaster>> SelectAllMasterAsync()
         {
             List<HtmlContentMaster> lHtmlContentMasters = new List<HtmlContentMaster>();
 

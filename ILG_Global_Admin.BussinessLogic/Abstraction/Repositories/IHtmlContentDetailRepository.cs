@@ -8,7 +8,7 @@ namespace ILG_Global_Admin.BussinessLogic.Abstraction.Repositories
     {
         Task<bool> DeleteByID(int nID);
         Task<bool> Insert(HtmlContentDetail oHtmlContentDetail);
-        Task<IEnumerable<HtmlContentDetail>> SelectAllAsync(string sLanguageCode);
+        Task<List<HtmlContentDetail>> SelectAllAsync(string sLanguageCode);
         Task<HtmlContentDetail> SelectByIdAsync(int nID, string sLanguageCode);
         Task<bool> Update(HtmlContentDetail oHtmlContentDetail);
     }
