@@ -26,7 +26,7 @@ namespace ILG_Global_Admin.DataAccess
             {
                 lSucessStoryDetails = await applicationDbContext.SucessStoryDetails.Include(m=> m.SucessStory).Where(m=>m.LanguageCode==languageCode).ToListAsync();
             }
-            catch (Exception)
+            catch (Exception oException)
             {
 
             }

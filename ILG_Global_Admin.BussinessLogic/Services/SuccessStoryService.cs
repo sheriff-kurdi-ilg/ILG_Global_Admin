@@ -180,6 +180,7 @@ namespace ILG_Global.Web.Services
                 IsEnabled = oSuccessStoriesDetailVM.IsEnabled,
                 PhoneNumber = oSuccessStoriesDetailVM.PhoneNumber,
                 PdfFileName = oSuccessStoriesDetailVM.PdfFileName,
+                ImageURL = oSuccessStoriesDetailVM.ImageURL,
                 
             };
             return sucessStoryMaster;
@@ -210,6 +211,7 @@ namespace ILG_Global.Web.Services
                 ImageName = sucessStoryMaster.ImageName,
                 PdfFileName = sucessStoryMaster.PdfFileName,
                 PhoneNumber = sucessStoryMaster.PhoneNumber,
+                ImageURL = sucessStoryMaster.ImageURL,
             };
             foreach (var item in sucessStoryMaster.SucessStoryDetails)
             {

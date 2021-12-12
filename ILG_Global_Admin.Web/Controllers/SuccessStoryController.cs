@@ -5,8 +5,10 @@ using ILG_Global_Admin.BussinessLogic.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,11 +18,13 @@ namespace ILG_Global_Admin.Web.Controllers
     {
         private readonly ISuccessStoryService successStoryService;
         private readonly ISucessStoryMasterRepository sucessStoryMasterRepository;
+        private readonly IHostEnvironment hostEnvironment;
 
-        public SuccessStoryController(ISuccessStoryService successStoryService, ISucessStoryMasterRepository sucessStoryMasterRepository)
+        public SuccessStoryController(ISuccessStoryService successStoryService, ISucessStoryMasterRepository sucessStoryMasterRepository, IHostEnvironment hostEnvironment)
         {
             this.successStoryService = successStoryService;
             this.sucessStoryMasterRepository = sucessStoryMasterRepository;
+            this.hostEnvironment = hostEnvironment;
         }
 
         // GET: SuccessStoryController
@@ -52,6 +56,14 @@ namespace ILG_Global_Admin.Web.Controllers
         {
             try
             {
+
+                string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads");
+                string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(successStoriesVM.Image.FileName);
+                string filePath = Path.Combine(uploadsFolder, uniqFileName);
+                successStoriesVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                successStoriesVM.ImageURL = uniqFileName;
+
+
                 await successStoryService.Insert(successStoriesVM);
                 return RedirectToAction(nameof(Index));
             }
@@ -79,6 +91,18 @@ namespace ILG_Global_Admin.Web.Controllers
 
             try
             {
+
+                if (successStoriesVM.Image != null)
+                {
+                    string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads");
+                    string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(successStoriesVM.Image.FileName);
+                    string filePath = Path.Combine(uploadsFolder, uniqFileName);
+                    successStoriesVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                    successStoriesVM.ImageURL = uniqFileName;
+
+                }
+
+
                 await successStoryService.Update(successStoriesVM);
                 return RedirectToAction(nameof(Index));
             }

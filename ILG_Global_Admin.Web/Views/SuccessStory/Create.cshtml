@@ -8,7 +8,7 @@
 
 
 <hr />
-<form asp-action="Create">
+<form enctype="multipart/form-data" asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="@Model.SuccessStoryId" />
     <input type="hidden" asp-for="@Model.ImageName" />
@@ -62,6 +62,19 @@
             </div>
 
         </div>
+
+                  <div class="row">
+                  <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" type="file" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                      <div  class="col-3">
+                        <img width="200px" src="~/no-image-png.png" />
+                </div>
+          </div>
+
+
         <div class="card-footer">
             <div class="form-group">
                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">

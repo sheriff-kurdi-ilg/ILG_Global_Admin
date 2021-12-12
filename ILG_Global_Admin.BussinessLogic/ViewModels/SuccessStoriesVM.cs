@@ -1,4 +1,5 @@
 ﻿using ILG_Global_Admin.BussinessLogic.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -33,6 +34,8 @@ namespace ILG_Global.BussinessLogic.ViewModels
         public string SummaryAr { get; set; }
         [Required]
         public string LanguageCode { get; set; }
+        public IFormFile Image { get; set; }
+        public string ImageURL { get; set; }
 
     }
 }

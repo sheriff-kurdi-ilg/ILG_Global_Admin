@@ -12,7 +12,7 @@ namespace ILG_Global_Admin.Web.Helpers
     {
         public static async Task Ensure(ILG_GlobalContext context, UserManager<ApplicationUser> userman, RoleManager<IdentityRole> roles)
         {
-            context.Database.Migrate();
+            //context.Database.Migrate();
             if (!roles.Roles.Any())
             {
                 IdentityRole adminrole = new IdentityRole
