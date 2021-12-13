@@ -195,6 +195,7 @@ namespace ILG_Global.Web.Services
                 PhoneNumber = oSuccessStoriesDetailVM.PhoneNumber,
                 PdfFileName = oSuccessStoriesDetailVM.PdfFileName,
                 ImageURL = oSuccessStoriesDetailVM.ImageURL,
+                PdfURL = oSuccessStoriesDetailVM.PdfURL,
                 
             };
 
@@ -227,6 +228,8 @@ namespace ILG_Global.Web.Services
                 PdfFileName = sucessStoryMaster.PdfFileName,
                 PhoneNumber = sucessStoryMaster.PhoneNumber,
                 ImageURL = sucessStoryMaster.ImageURL,
+                PdfURL = sucessStoryMaster.PdfURL,
+
             };
             foreach (var item in sucessStoryMaster.SucessStoryDetails)
             {

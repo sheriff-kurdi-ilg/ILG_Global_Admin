@@ -36,6 +36,8 @@ namespace ILG_Global.BussinessLogic.ViewModels
         public string LanguageCode { get; set; }
         public IFormFile Image { get; set; }
         public string ImageURL { get; set; }
+        public IFormFile Pdf { get; set; }
+        public string PdfURL { get; set; }
 
     }
 }

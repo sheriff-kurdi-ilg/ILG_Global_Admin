@@ -27,6 +27,7 @@ namespace ILG_Global_Admin.BussinessLogic.Models
         [InverseProperty(nameof(SucessStoryDetail.SucessStory))]
         public virtual ICollection<SucessStoryDetail> SucessStoryDetails { get; set; }
         public string ImageURL { get; set; }
+        public string PdfURL { get; set; }
 
     }
 }

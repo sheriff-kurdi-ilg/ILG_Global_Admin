@@ -93,6 +93,29 @@
           </div>
 
 
+                         <div class="row">
+                      
+                <div style="padding:20px" class="col-11">
+                      <div class="form-group">
+                    <label asp-for="Pdf" class="control-label"></label>
+                    <input asp-for="Pdf" type="file" class="form-control" />
+                    <span asp-validation-for="Pdf" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="ImageURL"/>
+                @if (Model.PdfURL != null)
+                {
+                    <div  class="col-3">
+                        <a href="~/Uploads/SuccessStories/pdf/@Model.PdfURL"  target="_blank">  Pdf</a>
+
+                    </div>
+                }else{
+                      <img width="200px" src="~/no-image-png.png" />
+
+                    }
+
+                </div>
+          </div>
+
         <div class="card-footer">
             <div class="form-group">
                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
