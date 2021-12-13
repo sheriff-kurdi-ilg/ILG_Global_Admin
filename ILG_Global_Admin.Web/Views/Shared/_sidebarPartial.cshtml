@@ -34,7 +34,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
+                <li class="nav-item menu-is-opening menu-open">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -44,7 +44,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href='@Url.Action("Edit", "HtmlContent", new  { id = 1 } )' class="nav-link">
                                 <i class="fas fa-chalkboard-teacher nav-icon"></i>
                                 <p>Leaderboard Section</p>
                             </a>
@@ -77,7 +77,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li>
-                                    <a href='@Url.Action("Index", "SuccessStory")' class="nav-link">
+                                    <a href='@Url.Action("Edit", "HtmlContent", new  { id = 3 } )' class="nav-link">
                                         <i class="fas fa-heading"></i>
                                         <p>Heading</p>
                                     </a>
@@ -85,7 +85,7 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li>
-                                    <a href='@Url.Action("Index", "SuccessStory")' class="nav-link">
+                                    <a href="@Url.Action("Index", "SuccessStory")" class="nav-link">
                                         <i class="fas fa-tasks"></i>
                                         <p>Slider Items</p>
                                     </a>
@@ -93,7 +93,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href='#' class="nav-link">
                                 <i class="fas fa-address-book nav-icon"></i>
                                 <p>
                                     Contact Us Section
@@ -102,7 +102,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li>
-                                    <a href='@Url.Action("Index", "ContactUs")' class="nav-link">
+                                    <a href='@Url.Action("Edit", "HtmlContent", new  { id = 4 } )' class="nav-link">
                                         <i class="fas fa-heading"></i>
                                         <p>Heading</p>
                                     </a>
@@ -112,7 +112,7 @@
                                 <li>
                                     <a href='@Url.Action("Index", "ContactUs")' class="nav-link">
                                         <i class="fas fa-tasks"></i>
-                                        <p>Slider Items</p>
+                                        <p>Contact Lines</p>
                                     </a>
                                 </li>
                             </ul>

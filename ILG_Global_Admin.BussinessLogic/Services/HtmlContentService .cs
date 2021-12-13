@@ -55,32 +55,38 @@ namespace ILG_Global.Web.Services
             }
         }
 
-        private async Task<HtmlContentMaster> oConvertMasterToDataModel(HtmlContentVM HtmlContentVM)
+        private async Task<HtmlContentMaster> oConvertMasterToDataModel(HtmlContentVM oHtmlContentVM)
         {
-            List<HtmlContentDetail> HtmlContentDetails = await GetEnArDetails(HtmlContentVM);
+            // List<HtmlContentDetail> HtmlContentDetails = await GetEnArDetails(oHtmlContentVM);
 
-            HtmlContentMaster HtmlContentMaster = new()
+            HtmlContentMaster oHtmlContentMaster = new HtmlContentMaster()
             {
-                Id = HtmlContentVM.HtmlContenID,
-                IsEnabled = HtmlContentVM.IsEnabled,
-                HtmlContentDetails = HtmlContentDetails,
+                Id = oHtmlContentVM.HtmlContenID,
+                IsEnabled = oHtmlContentVM.IsEnabled,
             };
-            return HtmlContentMaster;
+
+            HtmlContentDetail oHtmlContentDetail = await oConvertDetailViewModelToEnDataModel(oHtmlContentVM);
+            oHtmlContentMaster.HtmlContentDetails.Add(oHtmlContentDetail);
+
+            oHtmlContentDetail = await oConvertDetailViewModelToArDataModel(oHtmlContentVM);
+            oHtmlContentMaster.HtmlContentDetails.Add(oHtmlContentDetail);
+
+            return oHtmlContentMaster;
 
         }
 
-        private async Task<List<HtmlContentDetail>> GetEnArDetails(HtmlContentVM HtmlContentVM)
-        {
-            List<HtmlContentDetail> HtmlContentDetails = new List<HtmlContentDetail>();
+        //private async Task<List<HtmlContentDetail>> GetEnArDetails(HtmlContentVM HtmlContentVM)
+        //{
+        //    List<HtmlContentDetail> HtmlContentDetails = new List<HtmlContentDetail>();
 
-            HtmlContentDetail oHtmlContentDetail = await oConvertDetailViewModelToEnDataModel(HtmlContentVM);
-            HtmlContentDetails.Add(oHtmlContentDetail);
+        //    HtmlContentDetail oHtmlContentDetail = await oConvertDetailViewModelToEnDataModel(HtmlContentVM);
+        //    HtmlContentDetails.Add(oHtmlContentDetail);
 
-            oHtmlContentDetail = await oConvertDetailViewModelToArDataModel(HtmlContentVM);
-            HtmlContentDetails.Add(oHtmlContentDetail);
+        //    oHtmlContentDetail = await oConvertDetailViewModelToArDataModel(HtmlContentVM);
+        //    HtmlContentDetails.Add(oHtmlContentDetail);
 
-            return HtmlContentDetails;
-        }
+        //    return HtmlContentDetails;
+        //}
 
         private async Task<HtmlContentDetail> oConvertDetailViewModelToEnDataModel(HtmlContentVM HtmlContentVM)
         {
@@ -88,9 +94,10 @@ namespace ILG_Global.Web.Services
             {
                 HtmlContentId = HtmlContentVM.HtmlContenID,
                 LanguageCode = "en",
-                Title = HtmlContentVM.TitleAr,
-                Summary = HtmlContentVM.Summary,
-                SubTitle = HtmlContentVM.SubTitle
+                Title = HtmlContentVM.Title,
+                SubTitle = HtmlContentVM.SubTitle,
+                Summary = HtmlContentVM.Summary
+      
             };
 
             return HtmlContentDetail;
@@ -102,9 +109,9 @@ namespace ILG_Global.Web.Services
             {
                 HtmlContentId = HtmlContentVM.HtmlContenID,
                 LanguageCode = "ar",
-                Title = HtmlContentVM.Title,
-                Summary = HtmlContentVM.Summary,
-                SubTitle = HtmlContentVM.SubTitle
+                Title = HtmlContentVM.TitleAr,
+                SubTitle = HtmlContentVM.SubTitleAr,
+                Summary = HtmlContentVM.SummaryAr,
             };
 
             return HtmlContentDetail;

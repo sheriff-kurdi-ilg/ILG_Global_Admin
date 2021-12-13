@@ -16,16 +16,21 @@ namespace ILG_Global_Admin.Web.Controllers
 {
     public class SuccessStoryController : Controller
     {
+        #region DI
         private readonly ISuccessStoryService successStoryService;
         private readonly ISucessStoryMasterRepository sucessStoryMasterRepository;
         private readonly IHostEnvironment hostEnvironment;
 
-        public SuccessStoryController(ISuccessStoryService successStoryService, ISucessStoryMasterRepository sucessStoryMasterRepository, IHostEnvironment hostEnvironment)
+        public SuccessStoryController(
+            ISuccessStoryService successStoryService,
+            ISucessStoryMasterRepository sucessStoryMasterRepository,
+            IHostEnvironment hostEnvironment)
         {
             this.successStoryService = successStoryService;
             this.sucessStoryMasterRepository = sucessStoryMasterRepository;
             this.hostEnvironment = hostEnvironment;
         }
+        #endregion
 
         // GET: SuccessStoryController
         public async Task<ActionResult> Index()
@@ -56,13 +61,11 @@ namespace ILG_Global_Admin.Web.Controllers
         {
             try
             {
-
                 string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads/SuccessStories");
                 string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(successStoriesVM.Image.FileName);
                 string filePath = Path.Combine(uploadsFolder, uniqFileName);
                 successStoriesVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
                 successStoriesVM.ImageURL = uniqFileName;
-
 
                 await successStoryService.Insert(successStoriesVM);
                 return RedirectToAction(nameof(Index));
@@ -73,7 +76,7 @@ namespace ILG_Global_Admin.Web.Controllers
             }
         }
 
-        // GET: SuccessStoryController/Edit/5
+
         public async Task<ActionResult> Edit(int id)
         {
              SuccessStoriesVM lSuccessStoriesVMs = await successStoryService.SelectByIdAsync(id);
@@ -82,16 +85,12 @@ namespace ILG_Global_Admin.Web.Controllers
         }
 
 
-        // POST SuccessStoryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(SuccessStoriesVM successStoriesVM)
         {
-            
-
             try
             {
-
                 if (successStoriesVM.Image != null)
                 {
                     string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads/SuccessStories");
@@ -99,9 +98,7 @@ namespace ILG_Global_Admin.Web.Controllers
                     string filePath = Path.Combine(uploadsFolder, uniqFileName);
                     successStoriesVM.Image.CopyTo(new FileStream(filePath, FileMode.Create));
                     successStoriesVM.ImageURL = uniqFileName;
-
                 }
-
 
                 await successStoryService.Update(successStoriesVM);
                 return RedirectToAction(nameof(Index));
@@ -112,7 +109,6 @@ namespace ILG_Global_Admin.Web.Controllers
             }
         }
 
-        // GET: SuccessStoryController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
             SuccessStoriesVM lSuccessStoriesVMs = await successStoryService.SelectByIdAsync(id);
@@ -120,7 +116,6 @@ namespace ILG_Global_Admin.Web.Controllers
             return View(lSuccessStoriesVMs);
         }
 
-        // POST: SuccessStoryController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(SuccessStoriesVM successStoriesVM)

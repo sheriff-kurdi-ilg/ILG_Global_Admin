@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ILG_Global_Admin.BussinessLogic.ViewModels
 {
-    public class SuccessStoryComponent
+    public class SuccessStoryComponent_x
     {
         public SucessStoryMaster Master { get; set; }
         public SucessStoryDetail DetailEn { get; set; }

@@ -15,9 +15,9 @@ namespace ILG_Global_Admin.Web.Controllers
 
         public ContactUsController(IContactUsService contactUsService)
         {
-            
             this.contactUsService = contactUsService;
         }
+
         // GET: OurServicesController
         public async Task<ActionResult> Index()
         {

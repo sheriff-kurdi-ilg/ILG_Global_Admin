@@ -74,7 +74,7 @@ namespace ILG_Global_Admin.DataAccess
                 _context.SaveChanges();
                 return await Task.FromResult(true);
             }
-            catch (Exception)
+            catch (Exception oException)
             {
                 return false;
             }

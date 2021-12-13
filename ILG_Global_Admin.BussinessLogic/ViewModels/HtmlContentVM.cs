@@ -20,9 +20,9 @@ namespace ILG_Global.BussinessLogic.ViewModels
         #endregion
 
         #region Detail
-        [Required]
+        // [Required]
         public string Title { get; set; }
-        [Required]
+        // [Required]
         public string TitleAr { get; set; }
         [Required]
         public string SubTitle { get; set; }

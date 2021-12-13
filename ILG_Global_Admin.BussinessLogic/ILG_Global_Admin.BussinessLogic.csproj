@@ -15,6 +15,7 @@
     <Compile Remove="Services\ImageMasterService.cs" />
     <Compile Remove="Services\SectionDetailService.cs" />
     <Compile Remove="Services\SectionMasterService.cs" />
+    <Compile Remove="ViewModels\SuccessStoryComponent_x.cs" />
   </ItemGroup>
 
   <ItemGroup>

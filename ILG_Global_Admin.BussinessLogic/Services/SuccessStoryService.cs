@@ -35,21 +35,34 @@ namespace ILG_Global.Web.Services
         }
         public async Task<bool> Insert(SuccessStoriesVM oEntity)
         {
+            //try
+            //{
+            //        SucessStoryMaster sucessStoryMaster = await oConvertMasterToDataModel(oEntity);
+            //        SucessStoryDetail sucessStoryDetailAr = await oConvertDetailToDataArabicModel(oEntity, sucessStoryMaster);
+            //        SucessStoryDetail sucessStoryDetailEn = await oConvertDetailToDataEnglishModel(oEntity, sucessStoryMaster);
+            //        await sucessStoryMasterRepository.Insert(sucessStoryMaster);
+            //        await oISucessStoryDetailRepository.Insert(sucessStoryDetailEn);
+            //        await oISucessStoryDetailRepository.Insert(sucessStoryDetailAr);
+
+            //    return true;
+            //}
+            //catch (Exception e)
+            //{
+            //    return false;
+            //}
+
             try
             {
-                    SucessStoryMaster sucessStoryMaster = await oConvertMasterToDataModel(oEntity);
-                    SucessStoryDetail sucessStoryDetailAr = await oConvertDetailToDataArabicModel(oEntity, sucessStoryMaster);
-                    SucessStoryDetail sucessStoryDetailEn = await oConvertDetailToDataEnglishModel(oEntity, sucessStoryMaster);
-                    await sucessStoryMasterRepository.Insert(sucessStoryMaster);
-                    await oISucessStoryDetailRepository.Insert(sucessStoryDetailEn);
-                    await oISucessStoryDetailRepository.Insert(sucessStoryDetailAr);
-                
+                SucessStoryMaster oSucessStoryMaster = await oConvertToDataModel(oEntity);
+                await sucessStoryMasterRepository.Insert(oSucessStoryMaster);
+
                 return true;
             }
             catch (Exception e)
             {
                 return false;
             }
+
         }
 
         public async Task<List<SuccessStoriesVM>> SelectAllAsync(string LanguageCode)
@@ -68,9 +81,9 @@ namespace ILG_Global.Web.Services
         {
             try
             {
-                SuccessStoryComponent successStoryComponent = await oConvertToDataModel(oEntity);
-                await successStoryComponent.AddtoMaster();
-                await sucessStoryMasterRepository.Update(successStoryComponent.Master);
+                SucessStoryMaster oSucessStoryMaster = await oConvertToDataModel(oEntity);
+                await sucessStoryMasterRepository.Update(oSucessStoryMaster);
+
                 return true;
             }
             catch (Exception e)
@@ -97,16 +110,17 @@ namespace ILG_Global.Web.Services
 
         //==========================================================================================================================//
 
-        private async Task<SuccessStoryComponent> oConvertToDataModel(SuccessStoriesVM oSectionDetailVM)
+        private async Task<SucessStoryMaster> oConvertToDataModel(SuccessStoriesVM oSectionDetailVM)
         {
-            SucessStoryMaster sucessStoryMasterNew = await oConvertMasterToDataModel(oSectionDetailVM);
-            return new SuccessStoryComponent()
-            {
-                Master = sucessStoryMasterNew,
-                DetailAr = await oConvertDetailToDataArabicModel(oSectionDetailVM, sucessStoryMasterNew),
-                DetailEn = await oConvertDetailToDataEnglishModel(oSectionDetailVM, sucessStoryMasterNew)
-            };
-        
+            SucessStoryMaster oSucessStoryMaster = await oConvertMasterToDataModel(oSectionDetailVM);
+
+            SucessStoryDetail oSucessStoryDetail = await oConvertDetailToDataEnglishModel(oSectionDetailVM, oSucessStoryMaster);
+            oSucessStoryMaster.SucessStoryDetails.Add(oSucessStoryDetail);
+
+            oSucessStoryDetail = await oConvertDetailToDataArabicModel(oSectionDetailVM, oSucessStoryMaster);
+            oSucessStoryMaster.SucessStoryDetails.Add(oSucessStoryDetail);
+
+            return oSucessStoryMaster;
         }
         private async Task<SucessStoryDetail> oConvertDetailToDataEnglishModel(SuccessStoriesVM oSuccessStoriesDetailVM, SucessStoryMaster SucessStoryMaster)
         {
@@ -118,10 +132,10 @@ namespace ILG_Global.Web.Services
                 LanguageCode = "en",
 
             };
-            if (SucessStoryMaster != null)
-            {
-                sucessStoryEn.SucessStory = SucessStoryMaster;
-            }
+            //if (SucessStoryMaster != null)
+            //{
+            //    sucessStoryEn.SucessStory = SucessStoryMaster;
+            //}
 
             return sucessStoryEn;
         }
@@ -135,10 +149,10 @@ namespace ILG_Global.Web.Services
                 Summary = oSuccessStoriesDetailVM.SummaryAr,
                 LanguageCode = "ar",
             };
-            if (SucessStoryMaster != null)
-            {
-                sucessStoryAr.SucessStory = SucessStoryMaster;
-            }
+            //if (SucessStoryMaster != null)
+            //{
+            //    sucessStoryAr.SucessStory = SucessStoryMaster;
+            //}
 
             return sucessStoryAr;
         }
@@ -183,6 +197,7 @@ namespace ILG_Global.Web.Services
                 ImageURL = oSuccessStoriesDetailVM.ImageURL,
                 
             };
+
             return sucessStoryMaster;
         }
         private async Task<SuccessStoriesVM> oConvertDataModelToViewModel(SucessStoryDetail oSucessStoryDetail)
