@@ -22,15 +22,18 @@ namespace ILG_Global.BussinessLogic.ViewModels
         [Required]
         public string PdfFileName { get; set; }
         [Required]
+        [MaxLength(80)]
         public string Title { get; set; }
         [Required]
+        [MaxLength(500)]
         public string Summary { get; set; }
         [Required]
-
         [Display(Name = "Title")]
+        [MaxLength(80)]
         public string TitleAr { get; set; }
         [Required]
         [Display(Name = "Summary")]
+        [MaxLength(500)]
         public string SummaryAr { get; set; }
         [Required]
         public string LanguageCode { get; set; }

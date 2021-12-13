@@ -21,16 +21,22 @@ namespace ILG_Global.BussinessLogic.ViewModels
 
         #region Detail
         // [Required]
+        [MaxLength(80)]
         public string Title { get; set; }
         // [Required]
+        [MaxLength(80)]
         public string TitleAr { get; set; }
+        [MaxLength(80)]
         [Required]
         public string SubTitle { get; set; }
+        [MaxLength(80)]
         [Required]
         public string SubTitleAr { get; set; }
         [Required]
+        [MaxLength(500)]
         public string Summary { get; set; }
         [Required]
+        [MaxLength(500)]
         public string SummaryAr { get; set; }
         [Required]
         public string LanguageCode { get; set; }

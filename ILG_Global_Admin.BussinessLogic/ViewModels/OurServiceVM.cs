@@ -17,14 +17,18 @@ namespace ILG_Global.BussinessLogic.ViewModels
         public bool IsEnabled { get; set; }
         [Required]
         public string LanguageCode { get; set; }
+        [MaxLength(80)]
         [Required]
         public string Title { get; set; }
         [Required]
+        [MaxLength(80)]
         public string SubTitle { get; set; }
         [Required]
         [Display(Name = "SubTitle")]
+        [MaxLength(80)]
         public string SubTitleAr { get; set; }
         [Required]
+        [MaxLength(500)]
         public string Summary { get; set; }
         [Required]
 
@@ -32,9 +36,11 @@ namespace ILG_Global.BussinessLogic.ViewModels
         [Required]
 
         [Display(Name = "Title")]
+        [MaxLength(80)]
         public string TitleAr { get; set; }
         [Required]
         [Display(Name = "Summary")]
+        [MaxLength(500)]
         public string SummaryAr { get; set; }
 
         public int ImageMastersId { get; set; }
