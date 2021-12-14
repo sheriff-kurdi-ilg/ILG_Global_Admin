@@ -21,76 +21,87 @@
     <link rel="icon" type="image/png" href="/FaveIcon.svg" />
 
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ILG Global Admin</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        @if (User.Identity.IsAuthenticated)
-                        {
+<body style="overflow: hidden">
+    <div class="row">
+
+        <div class="col-4 col-sm-4 col-lg-2 p-0 m-0">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <aside class=" sidebar-dark-primary elevation-4 position-relative" style=" height: 100vh; top: 0; left: 0">
+                    @await Html.PartialAsync("_sidebarPartial")
+                </aside>
+            }
+        </div>
+        <div class="position-relative col-8 col-sm-8 col-lg-10 p-0 m-0" style="height: 100vh; overflow-y: scroll">
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+                    <div class="container">
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">ILG Global Admin</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                @if (User.Identity.IsAuthenticated)
+                                {
 
 
 
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Logout" role="button">
-                                    Logout
-                                </a>
-                            </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Account" asp-action="Logout" role="button">
+                                            Logout
+                                        </a>
+                                    </li>
 
-                        }
-                    </ul>
-                </div>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <div class="ml-auto mr-auto ml-sm-auto mr-sm-auto ml-md-auto mr-md-0" style=" min-height: 100vh; top: 0; right: 0; ">
+                <main role="main" class=" container" style="min-height: 100vh;">
+
+                    @RenderBody()
+                    <div style="clear:both"></div>
+                    <br />
+                    <br />
+                </main>
+                <footer class="border-top footer text-muted position-relative">
+                    <div class="container text-center">
+                        &copy; 2021 - ILG_Global_Admin.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                    </div>
+                </footer>
             </div>
-        </nav>
-    </header>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            @await Html.PartialAsync("_sidebarPartial")
-        </aside>
-    }
-        <div class="container">
-            <main role="main" class="pb-3">
 
-                @RenderBody()
-                <div style="clear:both"></div>
-                <br />
-                <br />
-            </main>
         </div>
 
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2021 - ILG_Global_Admin.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
-            </div>
-        </footer>
-
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/ckeditor5-build-classic/ckeditor.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="~/lib/bootstrap/dist/js/adminlte.min.js"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
-        <!-- AdminLTE for demo purposes -->
+    </div>
 
 
 
-        @await RenderSectionAsync("Scripts", required: false)
-    </body>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/ckeditor5-build-classic/ckeditor.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/lib/bootstrap/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+    <!-- AdminLTE for demo purposes -->
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 </html>
