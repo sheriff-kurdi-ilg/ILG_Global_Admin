@@ -9,7 +9,7 @@
 
 <h4>@Model.Title</h4>
 <hr />
-<form enctype="multipart/form-data"  asp-action="Edit">
+<form enctype="multipart/form-data" asp-action="Edit">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="@Model.SuccessStoryId" />
     <input type="hidden" asp-for="@Model.ImageName" />
@@ -70,51 +70,54 @@
 
         </div>
 
-                    <div class="row">
-                      
-                <div style="padding:20px" class="col-11">
-                      <div class="form-group">
+        <div class="row">
+
+            <div style="padding:20px" class="col-11">
+                <div class="form-group">
                     <label asp-for="Image" class="control-label"></label>
                     <input asp-for="Image" type="file" class="form-control" />
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
-                <input type="hidden" asp-for="ImageURL"/>
+                <input type="hidden" asp-for="ImageURL" />
                 @if (Model.ImageURL != null)
                 {
-                    <div  class="col-3">
+                    <div class="col-3">
                         <img width="200px" src="~/Uploads/SuccessStories/@Model.ImageURL" />
                     </div>
-                }else{
-                      <img width="200px" src="~/no-image-png.png" />
+                }
+                else
+                {
+                    <img width="200px" src="~/no-image-png.png" />
 
-                    }
+                }
 
-                </div>
-          </div>
+            </div>
+        </div>
 
 
-                         <div class="row">
-                      
-                <div style="padding:20px" class="col-11">
-                      <div class="form-group">
+        <div class="row">
+
+            <div style="padding:20px" class="col-11">
+                <div class="form-group">
                     <label asp-for="Pdf" class="control-label"></label>
                     <input asp-for="Pdf" type="file" class="form-control" />
                     <span asp-validation-for="Pdf" class="text-danger"></span>
                 </div>
-                <input type="hidden" asp-for="ImageURL"/>
+                <input type="hidden" asp-for="ImageURL" />
                 @if (Model.PdfURL != null)
                 {
-                    <div  class="col-3">
-                        <a href="~/Uploads/SuccessStories/pdf/@Model.PdfURL"  target="_blank">  Pdf</a>
+                    <div class="col-3">
+                        <a href="~/Uploads/SuccessStories/pdf/@Model.PdfURL" target="_blank">  Pdf</a>
 
                     </div>
-                }else{
-                      <img width="200px" src="~/no-image-png.png" />
+                }
+                else
+                {
+                    <img width="200px" src="~/no-image-png.png" />
+                }
 
-                    }
-
-                </div>
-          </div>
+            </div>
+        </div>
 
         <div class="card-footer">
             <div class="form-group">
@@ -146,8 +149,8 @@
 
     <script>
         ClassicEditor
-            .create(document.querySelector('#editor1') 
-            //    removePlugins: ['Paragraph','Heading', 'Link']
+            .create(document.querySelector('#editor1')
+                //    removePlugins: ['Paragraph','Heading', 'Link']
             )
             .catch(error => {
                 console.error(error);
