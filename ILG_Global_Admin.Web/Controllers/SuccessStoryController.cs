@@ -2,6 +2,7 @@
 using ILG_Global.BussinessLogic.ViewModels;
 using ILG_Global_Admin.BussinessLogic.Abstraction.Repositories;
 using ILG_Global_Admin.BussinessLogic.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +15,8 @@ using System.Threading.Tasks;
 
 namespace ILG_Global_Admin.Web.Controllers
 {
+
+    [Authorize]
     public class SuccessStoryController : Controller
     {
         #region DI
@@ -76,6 +79,8 @@ namespace ILG_Global_Admin.Web.Controllers
                 successStoriesVM.PdfURL = uniqpdfName;
 
                 await successStoryService.Insert(successStoriesVM);
+                TempData["Message"] = "Created!";
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -118,6 +123,8 @@ namespace ILG_Global_Admin.Web.Controllers
                 }
 
                 await successStoryService.Update(successStoriesVM);
+                TempData["Message"] = "Updated!";
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -140,6 +147,7 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
                 successStoryService.Delete(successStoriesVM);
+                TempData["Message"] = "Deleted!";
                 return RedirectToAction(nameof(Index));
             }
             catch

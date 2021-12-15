@@ -1,5 +1,6 @@
 ﻿using ILG_Global.BussinessLogic.Abstraction.Services;
 using ILG_Global.BussinessLogic.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace ILG_Global_Admin.Web.Controllers
 {
+
+    [Authorize]
     public class OurServicesController : Controller
     {
         private readonly IOurServicesService ourServicesService;
@@ -56,7 +59,7 @@ namespace ILG_Global_Admin.Web.Controllers
 
 
                 await ourServicesService.Insert(ourServiceVM);
-
+                TempData["Message"] = "Created!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -90,6 +93,8 @@ namespace ILG_Global_Admin.Web.Controllers
 
                 }
                 await ourServicesService.Update(ourServiceVM);
+                TempData["Message"] = "Update Succeed!";
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -114,6 +119,7 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
                 ourServicesService.Delete(ourServiceVM);
+                TempData["Message"] = "Deleted!";
                 return RedirectToAction(nameof(Index));
             }
             catch

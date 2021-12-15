@@ -1,6 +1,7 @@
 ﻿using ILG_Global.BussinessLogic.Abstraction.Services;
 using ILG_Global.BussinessLogic.ViewModels;
 using ILG_Global_Admin.BussinessLogic.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace ILG_Global_Admin.Web.Controllers
 {
+    [Authorize]
     public class HtmlContentController : Controller
     {
         private readonly IHtmlContentService htmlContentService;
@@ -52,6 +54,7 @@ namespace ILG_Global_Admin.Web.Controllers
             {
 
                 await htmlContentService.Insert(HtmlContentVM);
+                TempData["Message"] = "Created!";
 
                 return RedirectToAction(nameof(Index));
             }
@@ -77,6 +80,7 @@ namespace ILG_Global_Admin.Web.Controllers
             {
 
                 await htmlContentService.Update(HtmlContentVM);
+                TempData["Message"] = "Updated!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -101,6 +105,7 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
                 htmlContentService.Delete(HtmlContentVM);
+                TempData["Message"] = "Deleted!";
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -1,5 +1,6 @@
 ﻿using ILG_Global.BussinessLogic.Abstraction.Services;
 using ILG_Global.BussinessLogic.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ILG_Global_Admin.Web.Controllers
 {
+    [Authorize]
     public class ContactUsController : Controller
     {
         private readonly IContactUsService contactUsService;
@@ -46,6 +48,7 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
                 await contactUsService.Insert(ContactUsSectionVM);
+                TempData["Message"] = "Created!";
 
                 return RedirectToAction(nameof(Index));
             }
@@ -70,6 +73,7 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
                 await contactUsService.Update(ContactUsSectionVM);
+                TempData["Message"] = "Updated!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -94,6 +98,8 @@ namespace ILG_Global_Admin.Web.Controllers
             try
             {
                 contactUsService.Delete(ContactUsSectionVM);
+                TempData["Message"] = "Deleted!";
+
                 return RedirectToAction(nameof(Index));
             }
             catch

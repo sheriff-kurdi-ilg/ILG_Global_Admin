@@ -6,6 +6,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
+
+
+@{
+    string message = TempData["Message"] as string;
+    if (!String.IsNullOrEmpty(message))
+    {
+        <div style="margin:20px" class="alert alert-success " role="alert">@message</div>
+    }
+}
+
+
 <h1>Our Services</h1>
 
 <button value="Create New" type="button" onclick="location.href = '@Url.Action("Create", "OurServices")'" class="btn btn-primary float-right">

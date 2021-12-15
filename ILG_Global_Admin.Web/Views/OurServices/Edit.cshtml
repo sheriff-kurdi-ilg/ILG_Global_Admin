@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1 style="padding:20px">Our Services Edit</h1>
 
-<hr />
 <form enctype="multipart/form-data" asp-action="Edit">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="@Model.OurServiceID" />
@@ -104,13 +103,13 @@
                     <label class="custom-control-label" for="customSwitch3">Status</label>
                 </div>
             </div>
-            <div class="form-group float-end">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
         </div>
 
     </div>
-
+                <div class="form-group float-end">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
 </form>
 
 

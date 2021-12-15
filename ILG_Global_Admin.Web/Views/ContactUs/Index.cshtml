@@ -6,6 +6,15 @@
 }
 
 
+@{
+    string message = TempData["Message"] as string;
+    if (!String.IsNullOrEmpty(message))
+    {
+        <div style="margin:20px" class="alert alert-success " role="alert">@message</div>
+    }
+}
+
+
 @*<button value="Create New" type="button" onclick="location.href = '@Url.Action("Create", "ContactUs")'" class="btn btn-primary">
     <span>Create New</span>
 </button>*@
