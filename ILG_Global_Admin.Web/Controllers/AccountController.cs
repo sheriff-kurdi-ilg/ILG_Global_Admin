@@ -94,14 +94,17 @@ namespace ILG_Global_Admin.Web.Controllers
             }
         }
 
-        public async Task<ActionResult> Login()
+        public async Task<ActionResult> Login(string returnUrl = null)
         {
+            returnUrl = returnUrl ?? Url.Content("~/");
+
             if (HttpContext.User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
 
             LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.ReturnUrl = returnUrl;
 
             return View(loginViewModel);
         }
@@ -110,10 +113,14 @@ namespace ILG_Global_Admin.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel loginViewModel)
         {
+            loginViewModel.ReturnUrl = loginViewModel.ReturnUrl ?? Url.Content("~/");
+
+
             var result =  await applicationUserService.Login(loginViewModel);
             if (result!=null)
             {
-                return RedirectToAction("Index","Home");
+                return LocalRedirect(loginViewModel.ReturnUrl);
+                //return RedirectToAction("Index","Home");
 
             }
             else
