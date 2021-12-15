@@ -75,24 +75,38 @@ namespace ILG_Global.Web.Services
         {
             List<OurServiceDetail> ourServiceDetails = new List<OurServiceDetail>();
 
-            OurServiceDetail oOurServiceDetail = await oConvertDetailViewModelToDataModel(ourServiceVM,"en");
+            OurServiceDetail oOurServiceDetail = await oConvertDetailViewModelToEnDataModel(ourServiceVM);
             ourServiceDetails.Add(oOurServiceDetail);
 
-            oOurServiceDetail = await oConvertDetailViewModelToDataModel(ourServiceVM,"ar");
+            oOurServiceDetail = await oConvertDetailViewModelToArDataModel(ourServiceVM);
             ourServiceDetails.Add(oOurServiceDetail);
 
             return ourServiceDetails;
         }
 
-        private async Task<OurServiceDetail> oConvertDetailViewModelToDataModel(OurServiceVM ourServiceVM, string sLanguageCode)
+        private async Task<OurServiceDetail> oConvertDetailViewModelToEnDataModel(OurServiceVM ourServiceVM)
         {
             OurServiceDetail ourServiceDetail = new OurServiceDetail()
             {
                 OurServiceId = ourServiceVM.OurServiceID,
-                LanguageCode = sLanguageCode,
+                LanguageCode = "en",
                 Title = ourServiceVM.Title,
                 Summary = ourServiceVM.Summary,
                 SubTitle = ourServiceVM.SubTitle
+            };
+
+            return ourServiceDetail;
+        }
+
+        private async Task<OurServiceDetail> oConvertDetailViewModelToArDataModel(OurServiceVM ourServiceVM)
+        {
+            OurServiceDetail ourServiceDetail = new OurServiceDetail()
+            {
+                OurServiceId = ourServiceVM.OurServiceID,
+                LanguageCode = "ar",
+                Title = ourServiceVM.TitleAr,
+                Summary = ourServiceVM.SummaryAr,
+                SubTitle = ourServiceVM.SubTitleAr
             };
 
             return ourServiceDetail;

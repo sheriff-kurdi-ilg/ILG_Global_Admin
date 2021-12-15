@@ -163,6 +163,7 @@ namespace ILG_Global.Web.Services
             ContactUsSectionVM ContactUsSectionVM = new ContactUsSectionVM()
             {
                 ContactUsMasterId = ContactInformationMaster.Id,
+                FontAwsomeIconCssClass = ContactInformationMaster.FontAwsomeIconCssClass,
                 IsEnabled = ContactInformationMaster.IsEnabled,
             };
             foreach (var item in ContactInformationMaster.ContactInformationDetails)
@@ -177,6 +178,7 @@ namespace ILG_Global.Web.Services
             ContactInformationMaster ContactInformationMaster = new()
             {
                 Id = ContactUsSectionVM.ContactUsMasterId,
+                FontAwsomeIconCssClass = ContactUsSectionVM.FontAwsomeIconCssClass,
                 IsEnabled = ContactUsSectionVM.IsEnabled,
                 ContactInformationDetails = ContactInformationDetails,
             };

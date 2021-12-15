@@ -10,6 +10,7 @@
 @*<button value="Create New" type="button" onclick="location.href = '@Url.Action("Create", "HtmlContent")'" class="btn btn-primary float-right">
     <span>Create New</span>
 </button>*@
+
 <br /><br />
 
 <div class="card">
@@ -22,9 +23,11 @@
             <thead>
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.SubTitle)
                     </th>
-
                     <th>
                         Status
                     </th>
@@ -38,23 +41,25 @@
                 {
                     if (item.IsEnabled == true)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SubTitle)
-                            </td>
+                <tr>
+                    <td>
+                        @Html.Raw(item.Title)
+                    </td>
+                    <td>
+                        @Html.Raw(item.SubTitle)
+                    </td>
 
-                            <td>
-                                <button type="button" data-toggle="tooltip" data-placement="top" title="Disable" onclick="location.href = '@Url.Action("ActivationToggle", "OurServices", new { id = item.HtmlContenID })'" class="btn btn-tool" data-card-widget="card-refresh" data-source="/HtmlContent/Index" data-source-selector="#card-refresh-content" data-load-on-init="false">
-                                    <span class="badge bg-success">Enabled</span>
-                                </button>
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.HtmlContenID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.HtmlContenID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.HtmlContenID })
-                            </td>
-                        </tr>
-
+                    <td>
+                        <button type="button" data-toggle="tooltip" data-placement="top" title="Disable" onclick="location.href = '@Url.Action("ActivationToggle", "OurServices", new { id = item.HtmlContenID })'" class="btn btn-tool" data-card-widget="card-refresh" data-source="/HtmlContent/Index" data-source-selector="#card-refresh-content" data-load-on-init="false">
+                            <span class="badge bg-success">Enabled</span>
+                        </button>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.HtmlContenID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.HtmlContenID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.HtmlContenID })
+                    </td>
+                </tr>
                     }
                     else
                     {
@@ -62,7 +67,6 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.SubTitle)
                             </td>
-
                             <td>
 
                                 <button type="button" data-toggle="tooltip" data-placement="top" title="Enable" onclick="location.href = '@Url.Action("ActivationToggle", "OurServices", new { id = item.HtmlContenID })'" class="btn btn-tool" data-card-widget="card-refresh" data-source="/HtmlContent/Index" data-source-selector="#card-refresh-content" data-load-on-init="false">
@@ -76,7 +80,6 @@
                             </td>
                         </tr>
                     }
-
                 }
             </tbody>
         </table>

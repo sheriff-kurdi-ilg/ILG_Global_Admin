@@ -5,16 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
 
-<hr />
+
+<h1>Html Content</h1>
+
 <form enctype="multipart/form-data" asp-action="Edit">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="@Model.HtmlContenID" />
     <input type="hidden" asp-for="@Model.HtmlContenID" />
     <div class="card">
         <div class="card-header">
-            <h4>@Model.SubTitle</h4>
+            <h4>Html Content Edit</h4>
         </div>
         <div class="card-body">
             <div class="row">
@@ -33,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="SubTitle" class="control-label"></label>
-                                    <input asp-for="SubTitle" class="form-control" />
+                                    <textarea id="txtSubTitle" asp-for="SubTitle" class="form-control" ></textarea>
                                     <span asp-validation-for="SubTitle" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
@@ -60,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="SubTitleAr" class="control-label"></label>
-                                    <input asp-for="SubTitleAr" class="form-control" />
+                                    <textarea id="txtSubTitleAr" asp-for="SubTitleAr" class="form-control" ></textarea>
                                     <span asp-validation-for="SubTitleAr" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
@@ -77,19 +78,20 @@
         </div>
 
 
-          </div>
-        <div class="card-footer">
-            <div class="form-group">
-                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                    <input asp-for="IsEnabled" type="checkbox" class="custom-control-input" id="customSwitch3">
-                    <label class="custom-control-label" for="customSwitch3">Status</label>
-                </div>
-            </div>
-            <div class="form-group float-end">
-                <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+    <div class="card-footer">
+        <div class="form-group">
+            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                <input asp-for="IsEnabled" type="checkbox" class="custom-control-input" id="customSwitch3">
+                <label class="custom-control-label" for="customSwitch3">Status</label>
             </div>
         </div>
 
+    </div>
+    <br />
+
+    <div class="form-group float-end">
+        <input type="submit" value="Save" class="btn btn-primary" />
     </div>
 
 </form>
@@ -120,6 +122,17 @@
         });
     ClassicEditor
         .create(document.querySelector('#editor2'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#txtSubTitle'))
+        .catch(error => {
+            console.error(error);
+        });
+    ClassicEditor
+        .create(document.querySelector('#txtSubTitleAr'))
         .catch(error => {
             console.error(error);
         });

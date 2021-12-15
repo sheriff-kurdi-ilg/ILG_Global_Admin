@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="SubTitle" class="control-label"></label>
-                                <input asp-for="SubTitle" class="form-control" />
+                                <textarea id="txtSubTitle" asp-for="SubTitle" class="form-control" ></textarea>
                                 <span asp-validation-for="SubTitle" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="SubTitleAr" class="control-label"></label>
-                                <input asp-for="SubTitleAr" class="form-control" />
+                                <textarea id="txtSubTitleAr" asp-for="SubTitleAr" class="form-control" ></textarea>
                                 <span asp-validation-for="SubTitleAr" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -73,16 +73,16 @@
         </div>
 
 
-          <div class="row">
-                  <div class="form-group">
-                    <label asp-for="Image" class="control-label"></label>
-                    <input asp-for="Image" type="file" class="form-control" />
-                    <span asp-validation-for="Image" class="text-danger"></span>
-                </div>
-                      <div  class="col-3">
-                        <img width="200px" src="~/no-image-png.png" />
-                </div>
-          </div>
+        <div class="row">
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <img width="200px" src="~/no-image-png.png" />
+            </div>
+        </div>
 
         <div class="card-footer">
             <div class="form-group">
@@ -91,11 +91,12 @@
                     <label class="custom-control-label" for="customSwitch3">Status</label>
                 </div>
             </div>
-            <div class="form-group float-end">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
         </div>
 
+        <div class="form-group float-end">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
     </div>
 
 </form>
@@ -115,10 +116,27 @@
         .catch(error => {
             console.error(error);
         });
+
     ClassicEditor
         .create(document.querySelector('#editor2'))
         .catch(error => {
             console.error(error);
         });
+
+    ClassicEditor
+        .create(document.querySelector('#txtSubTitle'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#txtSubTitleAr'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    /*
+     id="txtSubTitle"
+     */
 </script>
 }

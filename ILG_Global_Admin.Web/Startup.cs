@@ -50,7 +50,7 @@ namespace ILG_Global_Admin.Web
             services.AddScoped<ISuccessStoryService, SuccessStoryService>();
             services.AddScoped<IOurServiceDetailRepository, OurServiceDetailRepository>();
             services.AddScoped<IOurServiceMasterRepository, OurServiceMasterRepository>();
-            services.AddScoped<IOurServicesService, OurServicesService>();            
+            services.AddScoped<IOurServicesService, OurServicesService>();
             services.AddScoped<IContactUsDetailRepository, ContactUsDetailRepository>();
             services.AddScoped<IContactUsMasterRepository, ContactUsMasterRepository>();
             services.AddScoped<IContactUsService, ContactUsService>();

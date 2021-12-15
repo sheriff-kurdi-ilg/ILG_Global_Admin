@@ -5,54 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1>Contact us </h1>
 
-<h4>@Model.Text</h4>
-<hr />
 
 <form asp-action="Edit">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+    <input type="hidden" asp-for="@Model.FontAwsomeIconCssClass" />
     <input type="hidden" asp-for="@Model.ContactUsMasterId" />
     <input type="hidden" asp-for="@Model.LanguageCode" />
+
     <div class="card">
         <div class="card-header">
-            
+            <h4>Contact us Details</h4>
         </div>
         <div class="card-body">
             <div class="row">
 
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-header">
-                                <h1 class="card-title">English Details</h1>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label asp-for="@Model.Text" class="control-label"></label>
-                                    <input asp-for="@Model.Text" class="form-control" />
-                                    <span asp-validation-for="@Model.Text" class="text-danger"></span>
-                                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">English Details</h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="@Model.Text" class="control-label"></label>
+                                <input asp-for="@Model.Text" class="form-control" />
+                                <span asp-validation-for="@Model.Text" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
-   
-    
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-header">
-                                <h1 class="card-title">Arabic Details</h1>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label asp-for="@Model.TextAr" class="control-label"></label>
-                                    <input asp-for="@Model.TextAr" class="form-control" />
-                                    <span asp-validation-for="@Model.TextAr" class="text-danger"></span>
-                                </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">Arabic Details</h1>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="@Model.TextAr" class="control-label"></label>
+                                <input asp-for="@Model.TextAr" class="form-control" />
+                                <span asp-validation-for="@Model.TextAr" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
- 
+                </div>
+
             </div>
 
         </div>
@@ -63,13 +62,14 @@
                     <label class="custom-control-label" for="customSwitch3">Status</label>
                 </div>
             </div>
-            <div class="form-group float-end">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
         </div>
 
-    </div>
 
+    </div>
+    <div class="form-group float-end">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
 </form>
 
 

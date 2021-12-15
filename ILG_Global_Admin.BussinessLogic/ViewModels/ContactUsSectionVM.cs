@@ -16,6 +16,8 @@ namespace ILG_Global.BussinessLogic.ViewModels
 
         [Required]
         public int ContactUsMasterId { get; set; }
+        public string FontAwsomeIconCssClass { get; set; }
+       
         [Required]
         public bool IsEnabled { get; set; }
         [Required]

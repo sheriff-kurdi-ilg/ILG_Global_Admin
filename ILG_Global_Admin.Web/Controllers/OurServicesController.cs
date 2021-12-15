@@ -48,7 +48,6 @@ namespace ILG_Global_Admin.Web.Controllers
         {
             try
             {
-
                 string uploadsFolder = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/Uploads/OurServices");
                 string uniqFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(ourServiceVM.Image.FileName);
                 string filePath = Path.Combine(uploadsFolder, uniqFileName);
