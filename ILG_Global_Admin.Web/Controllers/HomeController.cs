@@ -10,6 +10,7 @@ namespace ILG_Global_Admin.Web.Controllers
     public class HomeController : Controller
     {
         // GET: HomeController
+ 
         public ActionResult Index()
         {
             return View();
