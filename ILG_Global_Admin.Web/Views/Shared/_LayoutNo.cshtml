@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<title>@ViewData["Title"] - ILG_Global_Admin.Web</title>*@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/adminlte.min.css">
+
+    <link rel="icon" type="image/png" href="/FaveIcon.svg" />
+
+</head>
+<body style="overflow: hidden">
+    <div class="row">
+
+        <div class="col-4 col-sm-4 col-lg-2 p-0 m-0">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <aside class=" sidebar-dark-primary elevation-4 position-relative" style=" height: 100vh; top: 0; left: 0">
+                    @await Html.PartialAsync("_sidebarPartial")
+                </aside>
+            }
+        </div>
+        <div class="position-relative col-8 col-sm-8 col-lg-10 p-0 m-0" style="height: 100vh; overflow-y: scroll">
+   
+            <div class="ml-auto mr-auto ml-sm-auto mr-sm-auto ml-md-auto mr-md-0" style=" min-height: 100vh; top: 0; right: 0; ">
+                <main role="main" class="container" style="min-height: 100vh;">
+
+                    @RenderBody()
+                    <div style="clear:both"></div>
+                    <br />
+                    <br />
+                </main>
+                <footer class="border-top footer text-muted position-relative">
+                    <div class="container text-center">
+                        &copy; 2021 - ILG_Global_Admin.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/ckeditor5-build-classic/ckeditor.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/lib/bootstrap/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+    <!-- AdminLTE for demo purposes -->
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
